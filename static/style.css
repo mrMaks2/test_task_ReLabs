@@ -1,0 +1,12 @@
+body {
+    font-family: sans-serif;
+}
+
+#messages {
+    list-style-type: none;
+    padding: 0;
+}
+
+#messages li {
+    margin-bottom: 5px;
+}

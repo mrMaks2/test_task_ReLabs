@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Чат с WebSocket</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <h1>Чат</h1>
+
+    <form id="messageForm">
+        <input type="text" id="messageText" autocomplete="off">
+        <button type="submit">Отправить</button>
+    </form>
+
+    <ul id="messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        var websocket = new WebSocket("ws://localhost:8000/ws");
+
+        websocket.onopen = function(event) {
+            console.log("WebSocket connection opened");
+        };
+
+        websocket.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+            if (data.type === "new_message") {
+                var message = data.message;
+                var messagesList = document.getElementById("messages");
+                var li = document.createElement("li");
+                li.textContent = message;
+                messagesList.appendChild(li);
+            }
+        };
+
+        websocket.onclose = function(event) {
+            console.log("WebSocket connection closed");
+        };
+
+        document.getElementById("messageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var messageText = document.getElementById("messageText").value;
+            websocket.send(JSON.stringify({ "message": messageText }));
+            document.getElementById("messageText").value = "";
+        });
+    </script>
+</body>
+</html>
