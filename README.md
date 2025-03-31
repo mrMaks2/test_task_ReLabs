@@ -17,31 +17,13 @@
     git clone https://github.com/mrMaks2/test_task_ReLabs.git
     ```
 
-2.  Установите виртуальное окружение:
-
-    ```bash
-    virtualenv .
-    ```
-
-3.  Активируйте виртуальное окружение:
-
-    ```bash
-    Scripts\activate
-    ```
-
-4.  Установите зависимости:
+2.  Установите зависимости:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-5.  Перейдите в директорию с кодом:
-    
-    ```bash
-    cd src
-    ```
- 
-6.  Запустите сервер:
+3.  Запустите сервер:
 
     ```bash
     python main.py
