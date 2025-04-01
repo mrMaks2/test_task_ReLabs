@@ -1,5 +1,5 @@
-fastapi
-uvicorn
+fastapi==0.115.12
+uvicorn==0.34.0
 uvicorn[standard]
-Jinja2
-python-multipart
+Jinja2==3.1.6
+python-multipart==0.0.20
